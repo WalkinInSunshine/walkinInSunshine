@@ -3,12 +3,6 @@
   "version": "1.0.0",
   "description": "Choose your hiking trail based on weather conditions, with Angular",
   "main": "api_server/index.js",
-  "scripts": {
-    "create-db-dir": "node api_server/lib/make_directory.js",
-    "install": "npm run create-db-dir",
-    "test": "node_modules/mocha/bin/mocha test",
-    "start": "node api_server/index.js"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/energene/walkinInSunshine.git"
@@ -66,5 +60,5 @@
     "minimatch": "^3.0.0",
     "mocha": "^2.4.5",
     "webpack-stream": "3.2.0"
-  },
+  }
 }
