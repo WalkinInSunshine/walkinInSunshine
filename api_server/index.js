@@ -4,5 +4,5 @@ var port = process.env.PORT || 3000;
 var mongoUri = process.env.MONGO_URI || 'mongodb://localhost/db';
 console.log('Accessing db at: ', mongoUri);
 var app = require(__dirname + '/_server.js');
-app.listen(port);
+app.listen(port, mongoUri);
 console.log('server working on port:' + port);

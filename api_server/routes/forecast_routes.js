@@ -7,12 +7,19 @@ const bodyParser = require('body-parser').json();
 var forecastRouter = module.exports = exports = Router();
 
 forecastRouter.get('/forecast', bodyParser, (req, res) => {
-  // if(!req.query.lon.match(/-/)) req.query.lon = '-' + req.query.lon;
-  Forecast.find(req.query, (err, data) => {
+  console.log('req.query', req.query);
+  if (Object.keys(req.query).length === 0 && req.query.constructor === Object) {
+    console.log('this is dying!');
+    return errorHandler('lat and lon are required');
+  }
+  // need to findOne b/c the data model expects there to only be one entry per
+  // lat/lon pair.
+  Forecast.findOne(req.query, (err, data) => {
+    console.log('data', data);
     if (err) return errorHandler(err, res);
     if (data.length === 0) {
       forecastData(req.query.lat, req.query.lon);
-      Forecast.find(req.query, (err, data) => {
+      Forecast.findOne(req.query, (err, data) => {
         if (err) return errorHandler(err);
         res.status(200).json(data);
       });

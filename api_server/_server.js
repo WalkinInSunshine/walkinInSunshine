@@ -5,6 +5,9 @@ const bodyParser = require('body-parser');
 
 app.use(bodyParser.json());
 
+const forecastRouter = require(__dirname + '/routes/forecast_routes');
+
+app.use('/api', forecastRouter);
 app.use(express.static(__dirname + '/../client/build'));
 
 app.use((req, res, next) => {
@@ -20,10 +23,13 @@ module.exports = exports = {
     }
   },
   listen: function(port, mongoString, cb) {
+    console.log('mongoString', mongoString);
+    console.log('port from _server.js:', port);
     mongoose.connect(mongoString);
 
     return this.server = app.listen(port, cb);
   },
+  // close function is so tests can close the test server
   close: function(cb) {
     this.server.close();
     if (cb) cb();
