@@ -13,7 +13,7 @@
     "scripts": {
         "create-db-dir": "node api_server/lib/make_directory.js",
         "install": "npm run create-db-dir",
-        "test": "mocha --recursive"
+        "test": "mocha api_server/**/*test.js"
     },
     "contributors": [{
         "name": "Brandon Parker",
