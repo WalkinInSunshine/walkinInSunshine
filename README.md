@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/KMSkelton/walkinInSunshine.svg?branch=serverForecast)](https://travis-ci.org/KMSkelton/walkinInSunshine)
+
 # walkinInSunshine
 ... is a MEAN stack app for planning hikes using an interactive map, trail info, and weather data. It has the ability to save trail data on a user's secure profile.
 
