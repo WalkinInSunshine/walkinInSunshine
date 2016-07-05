@@ -12,7 +12,8 @@
     },
     "scripts": {
         "create-db-dir": "node api_server/lib/make_directory.js",
-        "install": "npm run create-db-dir"
+        "install": "npm run create-db-dir",
+        "test": "mocha --recursive"
     },
     "contributors": [{
         "name": "Brandon Parker",
