@@ -21,8 +21,7 @@ module.exports = exports = function(lat, lon) {
     response.on('end', (err) => {
       try {
         forecast = JSON.parse(buffer);
-      }
-      catch (err) {
+      } catch (err) {
         return console.log(err);
       }
 
