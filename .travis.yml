@@ -6,4 +6,4 @@ services:
 sudo: required
 before_script: npm install
 script:
-  - npm test
+  - mocha --recursive
