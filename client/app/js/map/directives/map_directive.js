@@ -1,5 +1,5 @@
 module.exports = function(app) {
-  app.directive('googlemapsdirective', function() {
+  app.directive('googlemapsdirective', () => {
     return {
       restrict: 'ACE',
       replace: true,

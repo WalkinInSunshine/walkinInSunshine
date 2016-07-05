@@ -3,9 +3,11 @@ var baseUrl = require('../../config').baseUrl;
 module.exports = function(app) {
   app.controller('MapController', ['mapResource', '$scope', 'uiGmapGoogleMapApi', function(mapResource, $scope, uiGmapGoogleMapApi) {
 
-    //var trailArray = mapResource.get();
-    var trailArray = [{'trailName':'Trail1', 'lat': 47.2, 'lon':-122.14, 'hikeDistance': 9, 'precipProbability': 39 }, {'trailName':'Trail2', 'lat': 47.4, 'lon':-121.14, 'hikeDistance': 8, 'precipProbability': 49 }]
-    console.log('trailArray',trailArray);
+    // var trailArray = mapResource.get();
+    var trailArray = [
+      { 'trailName': 'Trail1', 'lat': 47.2, 'lon': -122.14, 'hikeDistance': 9, 'precipProbability': 39 },
+      { 'trailName': 'Trail2', 'lat': 47.4, 'lon': -121.14, 'hikeDistance': 8, 'precipProbability': 49 }];
+    console.log('trailArray', trailArray);
     // Seattle Center is at the following lat, long
     var centerLatitude = document.getElementById('startPointLat') || 47.6205063;
     var centerLongitude = document.getElementById('startPointLon') || -122.3493;
