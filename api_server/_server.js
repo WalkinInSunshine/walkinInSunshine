@@ -2,12 +2,17 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+//const trailPop = require('./lib/trails_populator');
+const trailSeed = require('./lib/trail_seed');
 
 app.use(bodyParser.json());
 
-const forecastRouter = require(__dirname + '/routes/forecast_routes');
+//const forecastRouter = require(__dirname + '/routes/forecast_routes');
+//app.use('/api', trailPop);
+app.use('/api', trailSeed);
+trailSeed();
 
-app.use('/api', forecastRouter);
+//app.use('/api', forecastRouter);
 app.use(express.static(__dirname + '/../client/build'));
 
 app.use((req, res, next) => {
@@ -26,7 +31,7 @@ module.exports = exports = {
     console.log('mongoString', mongoString);
     console.log('port from _server.js:', port);
     mongoose.connect(mongoString);
-
+  //  trailPop();
     return this.server = app.listen(port, cb);
   },
   // close function is so tests can close the test server
