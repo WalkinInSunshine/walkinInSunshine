@@ -1,36 +1,40 @@
 {
-    "name": "walkininsunshine",
-    "version": "1.0.0",
-    "description": "Choose your hiking trail based on weather conditions, with Angular",
-    "main": "api_server/index.js",
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/energene/walkinInSunshine.git"
-    },
-    "engines": {
-        "node": "^4.2.3"
-    },
-    "scripts": {
-        "create-db-dir": "node api_server/lib/make_directory.js",
-        "install": "npm run create-db-dir",
-        "test": "mocha api_server/**/*test.js"
-    },
-    "contributors": [{
-        "name": "Brandon Parker",
-        "email": "Brandon@dkparker.com"
-    }, {
-        "name": "Gene Troy",
-        "email": "gene.f.troy@gmail.com"
-    }, {
-        "name": "Kris Skelton",
-        "email": "kristopher@kmskelton.com"
-    }],
-    "license": "MIT",
-
-  "bugs": {
-    "url": "https://github.com/energene/walkinInSunshine/issues"
+  "name": "walkininsunshine",
+  "version": "1.0.0",
+  "description": "Choose your hiking trail based on weather conditions, with Angular",
+  "main": "api_server/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/walkinInSunshine/walkinInSunshine.git"
   },
-  "homepage": "https://github.com/energene/walkinInSunshine#readme",
+  "engines": {
+    "node": "^4.2.3"
+  },
+  "scripts": {
+    "create-db-dir": "node api_server/lib/make_directory.js",
+    "trail_seed": "node api_server/lib/trail_seed.js",
+    "install": "npm run create-db-dir && npm run trail_seed",
+    "test": "mocha api_server/**/*test.js"
+  },
+  "contributors": [
+    {
+      "name": "Brandon Parker",
+      "email": "Brandon@dkparker.com"
+    },
+    {
+      "name": "Gene Troy",
+      "email": "gene.f.troy@gmail.com"
+    },
+    {
+      "name": "Kris Skelton",
+      "email": "kristopher@kmskelton.com"
+    }
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/walkinInSunshine/walkinInSunshine/issues"
+  },
+  "homepage": "https://github.com/walkinInSunshine/walkinInSunshine#readme",
   "dependencies": {
     "angular": "1.5.6",
     "angular-google-maps": "^2.3.3",
@@ -42,6 +46,7 @@
     "express": "^4.13.4",
     "jsonwebtoken": "^6.1.1",
     "lodash": "^4.13.1",
+    "mongodb": "^2.1.8",
     "mongoose": "^4.4.14"
   },
   "devDependencies": {
