@@ -2,7 +2,6 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-//const trailPop = require('./lib/trails_populator');
 const trailSeed = require('./lib/trail_seed');
 
 app.use(bodyParser.json());
