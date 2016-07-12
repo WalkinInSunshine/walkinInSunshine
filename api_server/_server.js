@@ -2,13 +2,12 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const trailSeed = require('./lib/trail_seed');
 
 app.use(bodyParser.json());
 
-app.use('/api', trailSeed);
-trailSeed();
+const forecastRouter = require(__dirname + '/routes/forecast_routes');
 
+app.use('/api', forecastRouter);
 app.use(express.static(__dirname + '/../client/build'));
 
 app.use((req, res, next) => {
