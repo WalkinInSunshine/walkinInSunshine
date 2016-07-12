@@ -12,7 +12,8 @@
     },
     "scripts": {
         "create-db-dir": "node api_server/lib/make_directory.js",
-        "install": "npm run create-db-dir",
+        "trail_seed": "node api_server/lib/trail_seed.js",
+        "install": "npm run create-db-dir && npm run trail_seed",
         "test": "mocha api_server/**/*test.js"
     },
     "contributors": [{
