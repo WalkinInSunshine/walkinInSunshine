@@ -5,7 +5,6 @@ const forecastData = require(__dirname + '/../lib/forecast_updater');
 const bodyParser = require('body-parser').json();
 
 var forecastRouter = module.exports = exports = Router();
-
 forecastRouter.get('/forecast', bodyParser, (req, res) => {
   console.log('req.query', req.query);
   if (Object.keys(req.query).length === 0 && req.query.constructor === Object) {
@@ -17,8 +16,9 @@ forecastRouter.get('/forecast', bodyParser, (req, res) => {
   Forecast.findOne(req.query, (err, data) => {
     console.log('data', data);
     if (err) return errorHandler(err, res);
-    if (data.length === 0) {
+    if (data === null) {
       forecastData(req.query.lat, req.query.lon);
+      console.log('forecastData called');
       Forecast.findOne(req.query, (err, data) => {
         if (err) return errorHandler(err);
         res.status(200).json(data);

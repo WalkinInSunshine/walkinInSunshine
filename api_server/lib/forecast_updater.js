@@ -1,7 +1,6 @@
 var https = require('https');
 var http = require('http');
 var API_KEY = '870e1d8314cbf00f2309e23133394e5f';
-
 console.log('forecast_updater.js');
 
 module.exports = exports = function(lat, lon) {
