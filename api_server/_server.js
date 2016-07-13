@@ -6,8 +6,10 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
 const forecastRouter = require(__dirname + '/routes/forecast_routes');
+const trailForecastCombiner = require(__dirname + '/routes/trail_forecast_combiner');
 
 app.use('/api', forecastRouter);
+app.use('/api', trailForecastCombiner);
 app.use(express.static(__dirname + '/../client/build'));
 
 app.use((req, res, next) => {

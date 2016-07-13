@@ -1,10 +1,10 @@
-var https = require('https');
-var http = require('http');
+const https = require('https');
+const http = require('http');
+
 var API_KEY = '870e1d8314cbf00f2309e23133394e5f';
 console.log('forecast_updater.js');
 
 module.exports = exports = function(lat, lon) {
-
   var url = 'https://api.forecast.io/forecast/' + API_KEY + '/' + lat + ',' + lon;
 
   var request = https.get(url, (response) => {
@@ -15,7 +15,6 @@ module.exports = exports = function(lat, lon) {
 
     response.on('data', (chunk) => {
       buffer += chunk;
-      console.log(buffer);
     });
     response.on('end', (err) => {
       try {

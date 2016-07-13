@@ -7,7 +7,7 @@ const errorHandler = require(__dirname + '/../lib/db_error_handler');
 
 const mongoose = require('mongoose');
 const port = process.env.PORT = 5555;
-console.log('port:', port);
+console.log('forecast server test, port:', port);
 const server = require(__dirname + '/../_server');
 const Forecast = require(__dirname + '/../models/forecast');
 
