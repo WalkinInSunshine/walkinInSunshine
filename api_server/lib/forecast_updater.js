@@ -1,10 +1,18 @@
 const https = require('https');
-const http = require('http');
+const inherits = require('util').inherits;
+const EventEmitter = require('events').EventEmitter;
 
 var API_KEY = '870e1d8314cbf00f2309e23133394e5f';
 console.log('forecast_updater.js');
+module.exports = exports = WeatherEmitter;
+function WeatherEmitter() {
+  if (!(this instanceof WeatherEmitter)) return new WeatherEmitter();
+  EventEmitter.call(this);
+}
+inherits(WeatherEmitter, EventEmitter);
 
-module.exports = exports = function(lat, lon) {
+WeatherEmitter.prototype.fetch = function(lat, lon) {
+  console.log('hi, I\'m forecast updater');
   var url = 'https://api.forecast.io/forecast/' + API_KEY + '/' + lat + ',' + lon;
 
   var request = https.get(url, (response) => {
@@ -22,7 +30,7 @@ module.exports = exports = function(lat, lon) {
       } catch (err) {
         return console.log(err);
       }
-
+      var weatherArray = [];
       // Let's add some data to the db
       // It should overwrite whatever is there because it will change each day
       for (var i = 0; i < forecast.daily.data.length; i++) {
@@ -36,21 +44,11 @@ module.exports = exports = function(lat, lon) {
           temperatureMin: forecast.daily.data[i].temperatureMin,
           temperatureMax: forecast.daily.data[i].temperatureMax
         };
-        var postOptions = {
-          hostname: 'localhost',
-          port: '3000',
-          path: '/api/forecast',
-          method: 'POST',
-          json: true,
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        };
-        var postData = http.request(postOptions, () => {});
         var preppedData = JSON.stringify(schemeifiedData);
-        postData.write(preppedData);
-        postData.end();
+        weatherArray.push(preppedData);
       }
+      console.log('weatherArray: ', weatherArray);
+      this.emit('end', weatherArray);
     });
   });
 };
