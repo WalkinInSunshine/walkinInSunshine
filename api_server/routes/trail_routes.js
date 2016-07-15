@@ -1,7 +1,8 @@
 const Router = require('express').Router;
-const Trails = require(__dirname + './models/trails');
+const Trails = require(__dirname + './../models/trail');
 const bodyParser = require('body-parser').json();
-const errorHandler = require(__dirname + './lib/db_error_handler');
+const errorHandler = require(__dirname + './../lib/db_error_handler');
+const weatherUpdater = require('./../lib/forecast_updater');
 
 var trailsRouter = module.exports = Router();
 
@@ -18,6 +19,7 @@ trailsRouter.post('/trails', bodyParser, (req, res) => {
 trailsRouter.get('/trails', (req, res) => {
   Trails.find(null, (err, data) => {
     if (err) return errorHandler(err, res);
+    console.log(data);
     res.status(200).json(data);
   });
 });

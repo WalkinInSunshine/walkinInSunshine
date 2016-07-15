@@ -2,14 +2,16 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-
+const trailRouter = require(__dirname + '/routes/trail_routes');
 app.use(bodyParser.json());
 
 const forecastRouter = require(__dirname + '/routes/forecast_routes');
-const trailForecastCombiner = require(__dirname + '/routes/trail_forecast_combiner');
+// const trailForecastCombiner = require(__dirname + '/routes/trail_forecast_combiner');
 
 app.use('/api', forecastRouter);
-app.use('/api', trailForecastCombiner);
+// app.use('/api', trailForecastCombiner);
+app.use('/api', trailRouter);
+
 app.use(express.static(__dirname + '/../client/build'));
 
 app.use((req, res, next) => {

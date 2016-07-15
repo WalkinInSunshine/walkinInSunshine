@@ -1,7 +1,7 @@
 const Router = require('express').Router;
 const mongoose = require('mongoose');
 const trails = require('./../models/trail');
-var weatherUpdater = require('./../lib/forecast_updater');
+const weatherUpdater = require('./../lib/forecast_updater');
 
 var trailForecastCombiner = module.exports = exports = Router();
 
