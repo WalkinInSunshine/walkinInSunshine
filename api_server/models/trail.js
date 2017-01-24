@@ -7,7 +7,8 @@ var trailSchema = new mongoose.Schema({
   difficulty: { type: String },
   hikeDistance: { type: Number },
   elevGain: { type: Number },
-  comment: { type: String }
+  comment: { type: String },
+  weather: { type: Array }
 });
 
 module.exports = mongoose.model('Trail', trailSchema);

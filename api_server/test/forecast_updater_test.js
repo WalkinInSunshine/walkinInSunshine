@@ -7,6 +7,7 @@ const port = process.env.PORT = 5555;
 const server = require(__dirname + '/../_server');
 const Forecast = require(__dirname + '/../models/forecast');
 
+console.log('in updater test');
 describe('testing forecast locally', () => {
   before((done) => {
     server.listen(port, 'mongodb://localhost/trails_test_db', done);

@@ -2,16 +2,16 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const trailSeed = require('./lib/trail_seed');
-
+const trailRouter = require(__dirname + '/routes/trail_routes');
 app.use(bodyParser.json());
 
-//const forecastRouter = require(__dirname + '/routes/forecast_routes');
-//app.use('/api', trailPop);
-app.use('/api', trailSeed);
-trailSeed();
+const forecastRouter = require(__dirname + '/routes/forecast_routes');
+// const trailForecastCombiner = require(__dirname + '/routes/trail_forecast_combiner');
 
-//app.use('/api', forecastRouter);
+app.use('/api', forecastRouter);
+// app.use('/api', trailForecastCombiner);
+app.use('/api', trailRouter);
+
 app.use(express.static(__dirname + '/../client/build'));
 
 app.use((req, res, next) => {
@@ -20,6 +20,8 @@ app.use((req, res, next) => {
   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, DELETE, PUT, PATCH');
   next();
 });
+
+// the following is for the testing server
 module.exports = exports = {
   server: {
     close: function() {
@@ -30,7 +32,6 @@ module.exports = exports = {
     console.log('mongoString', mongoString);
     console.log('port from _server.js:', port);
     mongoose.connect(mongoString);
-  //  trailPop();
     return this.server = app.listen(port, cb);
   },
   // close function is so tests can close the test server

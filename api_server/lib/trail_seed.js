@@ -9,9 +9,8 @@ var trailSeed = function trailSeed() {
   const child = execFile('mongoimport', ['--db', 'db', '--collection', 'trails', '--type', 'json', '--file', pathToFile, '--jsonArray'], (error, stdout, stderr) => {
     if (error) {
       throw error;
-      return;
     }
   });
   console.log('trail collection seeded!');
-}
+};
 trailSeed();
